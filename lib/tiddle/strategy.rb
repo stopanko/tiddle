@@ -45,7 +45,12 @@ module Devise
       end
 
       def authentication_keys
-        mapping.to.authentication_keys
+        keys = mapping.to.authentication_keys
+        if keys.is_a? Hash
+          keys.keys
+        else
+          keys
+        end
       end
 
       def touch_token(token)
